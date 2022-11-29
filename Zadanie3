@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        PartOfSentence part1=new Word("Всем");
+        PartOfSentence part2=new Punctuation(",");
+        PartOfSentence part3=new Word("привет");
+        PartOfSentence part4=new Punctuation("!");
+        Sentence sentence1 = new Sentence(part1,part2,part3,part4);
+        Sentence sentence2 = new Sentence(new Word("Почему"),new Word("мы"),new Word("должны")
+                ,new Word("всегда"),new Word("носить"),new Word("одинаковые"),new Word("трусы")
+                ,new Punctuation("?"));
+
+        sentence1.showSentence();
+        System.out.println();
+        sentence2.showSentence();
+        System.out.println();
+
+        Text text=new Text();
+        text.addSentence(sentence1);
+        text.addSentence(sentence2);
+        text.showText();
+
+    }
+}
+
+
+class Text {
+
+    private final ArrayList<Sentence> text=new ArrayList<Sentence>();
+
+    public void addSentence(Sentence sentence) {
+        text.add(sentence);
+    }
+    public void showText() {
+        for (Sentence sentence: text) {
+            sentence.showSentence();
+            System.out.print(" ");
+        }
+    }
+}
+
+class Sentence {
+
+    private final ArrayList<PartOfSentence> sentence=new ArrayList<PartOfSentence>();
+
+    Sentence(PartOfSentence... partsOfSentence) {
+        for (int i = 0; i < partsOfSentence.length; i++) {
+            if (!partsOfSentence[i].getString().equals(",")
+                    &&i>0) {
+                sentence.add(new Punctuation(" "));
+            }
+            sentence.add(partsOfSentence[i]);
+        }
+    }
+
+    public void addPartOfSentence(PartOfSentence partOfSentence) {
+        sentence.add(partOfSentence);
+    }
+
+    public void showSentence() {
+        for (PartOfSentence part: sentence) {
+            System.out.print(part.getString());
+        }
+    }
+}
+
+class Word implements PartOfSentence {
+
+    private final String word;
+
+    Word(String word) {
+        this.word=word;
+    }
+
+    public String getString() {
+        return word;
+    }
+}
+
+class Punctuation implements PartOfSentence {
+
+    private final String punctuation;
+
+    Punctuation(String punctuation) {
+        this.punctuation = punctuation;
+    }
+
+    public String getString() {
+        return punctuation;
+    }
+}
+
+interface PartOfSentence {
+    String getString();
+}
