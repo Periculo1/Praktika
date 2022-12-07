@@ -1,0 +1,22 @@
+uses graphABC;
+var x,y: integer;
+begin
+setwindowsize(360,400);
+setpenwidth(3);
+line(100,120,280,300);
+line(50,200,300,200);
+line(80,300,280,120);
+setbrushcolor(clred);
+ellipse(100,100,260,300);
+line(110,150,250,150);
+line(180,150,180,300);
+floodfill(180,140,clblack);
+setbrushcolor(clwhite);
+circle(160,130,10); circle(200,130,10);
+setbrushcolor(clblack);
+circle(160,180,10); circle(200,180,10);
+circle(130,180,10); circle(230,180,10);
+circle(160,220,10); circle(200,220,10);
+circle(130,220,10); circle(230,220,10);
+circle(160,260,10); circle(200,260,10);
+end.
