@@ -1,0 +1,22 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите k: ");
+        int k = sc.nextInt();
+        System.out.print("Введите n: ");
+        int n = sc.nextInt();
+        System.out.print("Введите m: ");
+        int m = sc.nextInt();
+
+        String da = "принадлежит";
+        String net = "не принадлежит";
+
+        System.out.println("(n, m] : " + (n < k && k <= m ? da : net) +
+                "\n [n, m) : " + (n <= k && k < m ? da : net) +
+                "\n (n, m) : " + (n < k && k < m ? da : net) +
+                "\n [n, m] : " + (n <= k && k <= m ? da : net));
+    }
+}
